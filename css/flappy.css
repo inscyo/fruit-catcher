@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Skranji-Bold";
+  src: url("../fonts/Skranji-Bold.ttf");
+}
+@font-face {
+  font-family: "Skranji-Regular";
+  src: url("../fonts/Skranji-Regular.ttf");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+}
+.app {
+  width: 100%;
+  height: 100vh;
+  /* background-image: url("../img/background-1.jpg");
+  background-size: fixed;
+  background-repeat: no-repeat; */
+  background-color: #000;
+}
+.app::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
+}
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background-color: #000;
+  border: 0px;
+  z-index: 999999;
+  border-radius: 2px;
+}
+.handler {
+  width: auto;
+  height: auto;
+  margin: 20px;
+  border: 10px solid green;
+}
