@@ -12,23 +12,26 @@ import {
   _define_visibility_call,
   _load_sound_,
 } from "./_function/function.js";
-import { _map_background_ } from "./_module/map.js";
-import { _fruit_object_, _fruit_splash_object_ } from "./_module/fruit.js";
-import { _bug_object_ } from "./_module/obstacle.js";
+import { _map_background_ } from "/fruit-catcher/js/_module/map.js";
+import {
+  _fruit_object_,
+  _fruit_splash_object_,
+} from "/fruit-catcher/js/_module/fruit.js";
+import { _bug_object_ } from "/fruit-catcher/js/_module/obstacle.js";
 import {
   _power_gem_object_,
   _power_energy_object_,
   _power_slowmo_object_,
   _power_money_object_,
-} from "./_module/powerup.js";
+} from "/fruit-catcher/js/_module/powerup.js";
 import {
   _score_gem_while_playing_,
   _score_energy_while_playing_,
   _score_bug_while_playing_,
   _score_basket_while_playing_,
-} from "./_play/score.js";
-import { _player_basket_object_ } from "./_player/player.js";
-import { _settings_button_while_playing_object_ } from "./_interaction/button.js";
+} from "/fruit-catcher/js/_play/score.js";
+import { _player_basket_object_ } from "/fruit-catcher/js/_player/player.js";
+import { _settings_button_while_playing_object_ } from "/fruit-catcher/js/_interaction/button.js";
 
 const _primary_width_ = 900;
 const _primary_height_ = 570;
@@ -41,23 +44,23 @@ _canvas_tag_.height = _primary_height_;
 const _canvas_width_ = _canvas_tag_.width;
 const _canvas_height_ = _canvas_tag_.height;
 _load_sound_(
-  "../resources/sound/fruit-sound/game-fruit-splat-0.mp3",
+  "/fruit-catcher/resources/sound/fruit-sound/game-fruit-splat-0.mp3",
   "_fruit_splat_audio_"
 );
 _load_sound_(
-  "../resources/sound/power-up-sound/power-up-0.mp3",
+  "/fruit-catcher/resources/sound/power-up-sound/power-up-0.mp3",
   "_energy_gain_audio_"
 );
 _load_sound_(
-  "../resources/sound/power-up-sound/power-up-1.mp3",
+  "/fruit-catcher/resources/sound/power-up-sound/power-up-1.mp3",
   "_gem_gain_audio_"
 );
 _load_sound_(
-  "../resources/sound/power-up-sound/power-up-2.mp3",
+  "/fruit-catcher/resources/sound/power-up-sound/power-up-2.mp3",
   "_slowmo_gain_audio_"
 );
 _load_sound_(
-  "../resources/sound/obstacle-sound/obstacle-0.mp3",
+  "/fruit-catcher/resources/sound/obstacle-sound/obstacle-0.mp3",
   "_buzz_gain_audio_"
 );
 window.addEventListener("DOMContentLoaded", async function (event) {
@@ -74,18 +77,18 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   let _buzz_gain_audio_ = await document.querySelector("#_buzz_gain_audio_");
 
   let _map_background_instance_;
-  await _get_image_from_folder(`/resources/sprites/map/map-6.jpg`).then(
-    (_spritesheet) => {
-      _map_background_instance_ = new _map_background_(
-        _context_,
-        _spritesheet,
-        0,
-        0,
-        _canvas_width_,
-        _canvas_height_
-      );
-    }
-  );
+  await _get_image_from_folder(
+    `/fruit-catcher/resources/sprites/map/map-6.jpg`
+  ).then((_spritesheet) => {
+    _map_background_instance_ = new _map_background_(
+      _context_,
+      _spritesheet,
+      0,
+      0,
+      _canvas_width_,
+      _canvas_height_
+    );
+  });
 
   let _fruit_object_instance_images_ = [];
   let _fruit_object_instance_ = [];
@@ -93,7 +96,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   let _fruit_object_timeout_;
   let _fruit_falling_interval_ = 70;
   await _get_all_image_from_folder_(
-    `/resources/sprites/fruit/fruit`,
+    `/fruit-catcher/resources/sprites/fruit/fruit`,
     9,
     "png"
   ).then((_spritesheet) => {
@@ -130,7 +133,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   let _fruit_splash_object_instance_;
 
   await _get_all_image_from_folder_(
-    `/resources/sprites/splash/splash`,
+    `/fruit-catcher/sprites/splash/splash`,
     1,
     "png"
   ).then((_spritesheet) => {
@@ -150,7 +153,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   let _bug_object_timeout_;
   window._bug_falling_interval_ = 4000;
   await _get_all_image_from_folder_(
-    `/resources/sprites/obstacle/obs`,
+    `/fruit-catcher/sprites/obstacle/obs`,
     2,
     "png"
   ).then((_spritesheet) => {
@@ -196,7 +199,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   window._player_gain_multiple_basket_ = false;
 
   let _power_up_object = _get_all_image_from_folder_(
-    `/resources/sprites/powerup/power`,
+    `/fruit-catcher/resources/sprites/powerup/power`,
     4,
     "png"
   );
@@ -417,7 +420,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   });
 
   let _score_gem_while_playing_object = _get_image_from_folder(
-    `/resources/gui/score/gem.png`
+    `/fruit-catcher/resources/gui/score/gem.png`
   );
 
   let _score_gem_object_instance_;
@@ -436,7 +439,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   });
 
   let _score_energy_while_playing_object = _get_image_from_folder(
-    `/resources/gui/score/energy.png`
+    `/fruit-catcher/resources/gui/score/energy.png`
   );
 
   let _score_energy_object_instance_;
@@ -454,11 +457,11 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   });
 
   let _score_bug_while_playing_object = _get_image_from_folder(
-    `/resources/sprites/obstacle/obs-1.png`
+    `/fruit-catcher/resources/sprites/obstacle/obs-1.png`
   );
 
   let _player_basket_object = _get_image_from_folder(
-    `/resources/sprites/player/player-2.png`
+    `/fruit-catcher/resources/sprites/player/player-2.png`
   );
   let _score_basket_object_instance_;
 
@@ -510,7 +513,7 @@ window.addEventListener("DOMContentLoaded", async function (event) {
   });
 
   let _settings_button_while_playing_ = _get_image_from_folder(
-    `/resources/gui/buttons/button-2.png`
+    `/fruit-catcher/resources/gui/buttons/button-2.png`
   );
 
   let _settings_button_while_playing_instance_;

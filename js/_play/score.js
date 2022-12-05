@@ -2,7 +2,7 @@ import {
   _load_sprite_image_,
   _sprite_sheet_clipping_,
   _sprite_sheet_image_,
-} from "../_function/function.js";
+} from "/fruit-catcher/js/_function/function.js";
 
 export const _score_gem_while_playing_ = function (
   _context,
