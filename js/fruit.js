@@ -2,7 +2,7 @@ import {
   _load_sprite_image_,
   _sprite_sheet_clipping_,
   _sprite_sheet_image_,
-} from "../function.js";
+} from "./function.js";
 
 /* Instances */
 export const _fruit_object_ = function (
