@@ -3,7 +3,7 @@ import {
   _sprite_sheet_clipping_,
   _sprite_sheet_image_,
   _if_two_object_collides_,
-} from "/fruit-catcher/js/_function/function.js";
+} from "./function.js";
 
 export const _player_basket_object_ = function (
   _context,

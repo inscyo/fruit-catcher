@@ -2,7 +2,7 @@ import {
   _load_sprite_image_,
   _sprite_sheet_clipping_,
   _sprite_sheet_image_,
-} from "/fruit-catcher/js/_function/function.js";
+} from "./function.js";
 
 export const _settings_button_while_playing_object_ = function (
   _context,
